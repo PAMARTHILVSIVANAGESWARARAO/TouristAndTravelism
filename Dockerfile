@@ -6,14 +6,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-<<<<<<< HEAD
-# Install MongoDB extension via PECL
-RUN pecl install mongodb && docker-php-ext-enable mongodb
-=======
-# Install MongoDB extension (match your local version 1.19.3)
-RUN pecl install mongodb-1.19.3 \
+# Install MongoDB extension via PECL (compatible with PHP 8.2)
+RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
->>>>>>> 71ce01678b2a1b0726299adea4e486e551148a14
 
 # Set working directory
 WORKDIR /var/www/html
@@ -24,8 +19,8 @@ COPY . /var/www/html
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Run composer install
-RUN composer install --no-dev --optimize-autoloader
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-mongodb
 
 # Expose port 10000
 EXPOSE 10000
