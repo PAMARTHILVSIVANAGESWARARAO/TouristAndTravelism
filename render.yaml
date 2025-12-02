@@ -1,0 +1,7 @@
+version: 1
+services:
+  - type: web
+    name: app
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    port: 10000
