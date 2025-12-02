@@ -6,8 +6,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install MongoDB extension via PECL
-RUN pecl install mongodb && docker-php-ext-enable mongodb
+# Install MongoDB extension (match your local XAMPP version)
+RUN pecl install mongodb-1.19.3 \
+    && docker-php-ext-enable mongodb
 
 # Set working directory
 WORKDIR /var/www/html
