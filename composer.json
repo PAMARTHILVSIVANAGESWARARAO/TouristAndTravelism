@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "mongodb/mongodb": "^1.20",
+    "mongodb/mongodb": "^1.19",
     "php": ">=8.0",
     "cloudinary/cloudinary_php": "^2.11",
     "firebase/php-jwt": "^6.10",
