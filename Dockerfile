@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install MongoDB extension (match your local XAMPP version)
+# Install MongoDB extension (match your local version 1.19.3)
 RUN pecl install mongodb-1.19.3 \
     && docker-php-ext-enable mongodb
 
